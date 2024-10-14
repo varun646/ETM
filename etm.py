@@ -20,6 +20,8 @@ class ETM(nn.Module):
         self.num_topics = num_topics
         self.vocab_size = vocab_size
         self.t_hidden_size = t_hidden_size
+        # TODO: should rho_size == emsize?
+        
         self.rho_size = rho_size
         self.enc_drop = enc_drop
         self.emsize = emsize
@@ -29,10 +31,14 @@ class ETM(nn.Module):
         
         ## define the word embedding matrix \rho
         if train_embeddings:
+            # TODO: why is this a linear layer?
             self.rho = nn.Linear(rho_size, vocab_size, bias=False)
         else:
             num_embeddings, emsize = embeddings.size()
+            # TODO: why is rho defined here and never used?
             rho = nn.Embedding(num_embeddings, emsize)
+
+            # TODO: are embeddings stored as nn.Embedding() objects?
             self.rho = embeddings.clone().float().to(device)
 
         ## define the matrix containing the topic embeddings
@@ -249,9 +255,9 @@ class ETM(nn.Module):
                 topic_words = [vocabulary[a].strip() for a in top_words]
                 topics_words.append(' '.join(topic_words))
                 with open(results_file_name, "a") as results_file:
-	                results_file.write('Topic {}: {}\n'.format(k, topic_words))
+                    results_file.write('Topic {}: {}\n'.format(k, topic_words))
             with open(results_file_name, "a") as results_file:
-	            results_file.write(10*'#'+'\n') # But this could have been done as a function
+                results_file.write(10*'#'+'\n') # But this could have been done as a function
 
             if show_emb:
                 ## visualize word embeddings by using V to get nearest neighbors
@@ -294,7 +300,7 @@ class ETM(nn.Module):
                 else:
                     normalized_data_batch_1 = data_batch_1
                 theta, _ = self.get_theta(normalized_data_batch_1)
-                ## get predition loss using second half
+                ## get prediction loss using second half
                 data_batch_2 = get_batch(test_2, indice, device)
                 sums_2 = data_batch_2.sum(1).unsqueeze(1)
                 res = torch.mm(theta, beta)

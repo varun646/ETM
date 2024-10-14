@@ -11,7 +11,7 @@ from tqdm import tqdm
 
 def read_mat_file(key, path):
     """
-    read the preprocess mat file whose key and and path are passed as parameters
+    read the preprocess mat file whose key and path are passed as parameters
 
     Args:
         key ([type]): [description]

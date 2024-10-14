@@ -35,6 +35,8 @@ parser.add_argument('--batch_size', type=int, default=1000, help='input batch si
 
 ### model-related arguments
 parser.add_argument('--num_topics', type=int, default=50, help='number of topics')
+
+# TODO: why are rho size and emb size separated out if they are in the same embedding space
 parser.add_argument('--rho_size', type=int, default=300, help='dimension of rho')
 parser.add_argument('--emb_size', type=int, default=300, help='dimension of embeddings')
 parser.add_argument('--t_hidden_size', type=int, default=800, help='dimension of hidden space of q(theta)')
