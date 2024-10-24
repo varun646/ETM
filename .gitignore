@@ -3,3 +3,11 @@
 results/
 data/
 .DS_Store
+.idea/ETM.iml
+.idea/inspectionProfiles/profiles_settings.xml
+.idea/inspectionProfiles/Project_Default.xml
+.idea/misc.xml
+.idea/vcs.xml
+__pycache__/data.cpython-311.pyc
+__pycache__/etm.cpython-311.pyc
+__pycache__/utils.cpython-311.pyc

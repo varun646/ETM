@@ -21,7 +21,7 @@ class ETM(nn.Module):
         self.vocab_size = vocab_size
         self.t_hidden_size = t_hidden_size
         # TODO: should rho_size == emsize?
-        
+
         self.rho_size = rho_size
         self.enc_drop = enc_drop
         self.emsize = emsize
